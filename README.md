@@ -26,9 +26,9 @@ Claro! Com base no código fornecido e no repositório Sonoff-Scanner-GPR2, aqui
 
 1. **Clonar o repositório:**
 
-   ```bash
    git clone https://github.com/casousavng/Sonoff-Scanner-GPR2.git
    cd Sonoff-Scanner-GPR2
+   
 
 	2.	Criar e ativar um ambiente virtual (opcional mas recomendado):
 
