@@ -1,110 +1,133 @@
-Claro! Com base no código fornecido e no repositório Sonoff-Scanner-GPR2, aqui está um ficheiro README.md em português de Portugal, adequado para o teu projeto:
-
-⸻
-
-
-
 # 🔌 Sonoff Scanner GPR2
 
-**Sonoff Scanner GPR2** é uma aplicação web desenvolvida em Flask que permite detetar, controlar e gerir dispositivos Sonoff com firmware Tasmota na tua rede local. A aplicação oferece funcionalidades como scan de rede, controlo de dispositivos, gestão de nomes e bloqueio de IPs através de `iptables`.
-
-## 🚀 Funcionalidades
-
-- **Deteção de dispositivos Sonoff**: Realiza scans na rede local para identificar dispositivos Sonoff ativos.
-- **Controlo de dispositivos**: Liga ou desliga dispositivos diretamente através da interface web.
-- **Gestão de nomes**: Permite renomear dispositivos para uma identificação mais fácil.
-- **Bloqueio de IPs**: Bloqueia ou desbloqueia o acesso de dispositivos à rede utilizando `iptables`.
-- **Autenticação**: Acesso à área de administração protegido por login.
-
-## 🛠️ Requisitos
-
-- Python 3.8 ou superior
-- `nmap` instalado no sistema (utilizado para o scan de rede)
-- Permissões de `sudo` para gerir regras de `iptables`
-
-## 📦 Instalação
-
-1. **Clonar o repositório:**
-
-   git clone https://github.com/casousavng/Sonoff-Scanner-GPR2.git
-   cd Sonoff-Scanner-GPR2
-   
-
-	2.	Criar e ativar um ambiente virtual (opcional mas recomendado):
-
-python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
-
-
-	3.	Instalar as dependências:
-
-pip install -r requirements.txt
-
-
-	4.	Configurar variáveis de ambiente:
-Criar um ficheiro .env na raiz do projeto com o seguinte conteúdo:
-
-USERNAME=teu_utilizador
-PASSWORD=sua_senha_segura
-
-
-	5.	Executar a aplicação:
-
-python app.py
-
-A aplicação estará disponível em http://localhost:7500.
-
-🖥️ Utilização
-	•	Página principal: Acede a http://localhost:7500 para visualizar os dispositivos detetados.
-	•	Administração: Acede a http://localhost:7500/admin e autentica-te para gerir dispositivos.
-	•	Scan de rede: Utiliza a opção “Scan” na interface para procurar novos dispositivos Sonoff.
-	•	Controlo de dispositivos: Liga ou desliga dispositivos diretamente na interface.
-	•	Gestão de nomes: Renomeia dispositivos para uma identificação mais fácil.
-	•	Bloqueio de IPs: Bloqueia ou desbloqueia o acesso de dispositivos à rede.
-
-🗂️ Estrutura do Projeto
-
-Sonoff-Scanner-GPR2/
-├── app.py             # Código principal da aplicação Flask
-├── sonoff.db          # Base de dados SQLite (criada automaticamente)
-├── templates/         # Ficheiros HTML para a interface web
-│   ├── index.html
-│   └── admin.html
-├── static/            # Ficheiros estáticos (CSS, JS, imagens)
-├── .env               # Ficheiro de variáveis de ambiente
-├── requirements.txt   # Lista de dependências Python
-└── README.md          # Este ficheiro
-
-⚠️ Notas
-	•	Permissões de sudo: Algumas funcionalidades, como o bloqueio de IPs, requerem permissões de sudo. Certifica-te de que o utilizador que executa a aplicação tem as permissões necessárias.
-	•	Segurança: Protege o ficheiro .env e evita expor as credenciais em ambientes públicos.
-	•	Compatibilidade: Esta aplicação foi testada com dispositivos Sonoff que utilizam o firmware Tasmota.
-
-📄 Licença
-
-Este projeto está licenciado sob a MIT License.
-
-🤝 Contribuições
-
-Contribuições são bem-vindas! Sente-te à vontade para abrir issues ou pull requests no repositório.
-
-⸻
-
-
+**Sonoff Scanner GPR2** é uma aplicação web desenvolvida em Flask que permite detetar e controlar dispositivos Sonoff com firmware Tasmota na rede local. Através de uma interface simples, é possível identificar dispositivos na rede, controlá-los, renomeá-los e até bloquear o seu acesso com regras de iptables.
 
 ---
 
-### 📄 requirements.txt
+## 📋 Funcionalidades
 
-Com base nas bibliotecas utilizadas no código fornecido, aqui está o conteúdo do ficheiro `requirements.txt`:
+- Deteta automaticamente dispositivos Sonoff com firmware Tasmota na rede local.
+- Permite ligar e desligar dispositivos remotamente via interface web.
+- Gestão de nomes personalizados para fácil identificação.
+- Bloqueio e desbloqueio de IPs de dispositivos através de iptables.
+- Área de administração protegida por autenticação.
+- Persistência de dados com SQLite.
+- Scan de rede com `nmap`.
 
-```txt
+---
+
+## 🚀 Instalação
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/casousavng/Sonoff-Scanner-GPR2.git
+cd Sonoff-Scanner-GPR2
+```
+
+### 2. Criar ambiente virtual (opcional mas recomendado)
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # No Windows: venv\Scripts\activate
+```
+
+### 3. Instalar dependências
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Instalar nmap (necessário para scan de rede)
+
+```bash
+sudo apt install nmap
+```
+
+### 5. Configurar variáveis de ambiente
+
+Cria um ficheiro `.env` com o seguinte conteúdo:
+
+```
+USERNAME=teu_utilizador
+PASSWORD=sua_senha_segura
+```
+
+### 6. Executar a aplicação
+
+```bash
+python app.py
+```
+
+Acede à aplicação em: [http://localhost:7500](http://localhost:7500)
+
+---
+
+## 🖥️ Utilização
+
+- Acede ao endereço principal para ver os dispositivos detetados.
+- Usa o botão "Scan" para procurar dispositivos Sonoff ativos.
+- Liga/desliga dispositivos diretamente através da interface.
+- Acede à página `/admin` para gerir nomes, bloquear/desbloquear IPs e atualizar dispositivos.
+- A autenticação é necessária para aceder à página de administração.
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+Sonoff-Scanner-GPR2/
+├── app.py               # Código principal da aplicação Flask
+├── sonoff.db            # Base de dados SQLite gerada automaticamente
+├── templates/           # Páginas HTML (Jinja2)
+│   ├── index.html
+│   └── admin.html
+├── static/              # Assets estáticos (JS, CSS, imagens)
+├── .env                 # Variáveis de ambiente (não incluído no repositório)
+├── requirements.txt     # Dependências Python
+└── README.md            # Este ficheiro
+```
+
+---
+
+## 🔐 Segurança
+
+- Apenas utilizadores autenticados podem aceder à interface de administração.
+- As credenciais são definidas através de variáveis de ambiente (`.env`).
+- Para bloquear IPs, é necessário que o utilizador que executa o app tenha permissões de `sudo`.
+
+---
+
+## 📦 requirements.txt
+
+Conteúdo recomendado para o ficheiro `requirements.txt`:
+
+```
 Flask
 requests
 python-dotenv
+```
 
-Certifica-te de que o nmap está instalado no sistema, pois é utilizado para o scan de rede. No Ubuntu, podes instalá-lo com:
+---
 
-sudo apt-get install nmap
+## ⚠️ Notas Importantes
 
-Se precisares de mais alguma coisa ou tiveres dúvidas, estou aqui para ajudar!
+- O script utiliza `sudo` para executar comandos `iptables`, por isso, o utilizador deve ter permissões adequadas.
+- Verifica se `nmap` está corretamente instalado e acessível via terminal.
+- Dispositivos Sonoff devem estar com firmware **Tasmota** para serem compatíveis com os comandos utilizados.
+
+---
+
+## 📜 Licença
+
+Distribuído sob a licença MIT. Consulta o ficheiro `LICENSE` para mais informações.
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Podes abrir uma issue ou submeter um pull request diretamente neste repositório.
+
+---
+
+Desenvolvido com ❤️ por [@casousavng](https://github.com/casousavng)
