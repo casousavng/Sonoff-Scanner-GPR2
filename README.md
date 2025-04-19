@@ -8,6 +8,7 @@
 
 - Deteta automaticamente dispositivos Sonoff com firmware Tasmota na rede local.
 - Permite ligar e desligar dispositivos remotamente via interface web.
+- intervace PWA para "instalacao" em dispositicos Android e iOS.
 - Gestão de nomes personalizados para fácil identificação.
 - Bloqueio e desbloqueio de IPs de dispositivos através de iptables.
 - Área de administração protegida por autenticação.
@@ -50,13 +51,13 @@ Cria um ficheiro `.env` com o seguinte conteúdo:
 
 ```
 USERNAME=teu_utilizador
-PASSWORD=sua_senha_segura
+PASSWORD=tua_senha_segura
 ```
 
 ### 6. Executar a aplicação
 
 ```bash
-python app.py
+python sonoff_scan.py
 ```
 
 Acede à aplicação em: [http://localhost:7500](http://localhost:7500)
@@ -66,9 +67,9 @@ Acede à aplicação em: [http://localhost:7500](http://localhost:7500)
 ## 🖥️ Utilização
 
 - Acede ao endereço principal para ver os dispositivos detetados.
-- Usa o botão "Scan" para procurar dispositivos Sonoff ativos.
 - Liga/desliga dispositivos diretamente através da interface.
 - Acede à página `/admin` para gerir nomes, bloquear/desbloquear IPs e atualizar dispositivos.
+- Usa o botão "Scan" para procurar dispositivos Sonoff ativos.
 - A autenticação é necessária para aceder à página de administração.
 
 ---
@@ -113,6 +114,7 @@ python-dotenv
 ## ⚠️ Notas Importantes
 
 - O script utiliza `sudo` para executar comandos `iptables`, por isso, o utilizador deve ter permissões adequadas.
+- nao correr o script Python com sudo pois nao deteta os dispositivos pelo nmap.
 - Verifica se `nmap` está corretamente instalado e acessível via terminal.
 - Dispositivos Sonoff devem estar com firmware **Tasmota** para serem compatíveis com os comandos utilizados.
 
